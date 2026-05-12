@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: humatext-api
+    runtime: python
+    repo: Rikusei2003/humatext
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql+asyncpg://postgres.zjwkjalurhlqgskixcdt:YcfuLFgmspPMLzIX@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres
+      - key: JWT_SECRET
+        value: humatext-prod-2026
+      - key: LLM_API_KEY
+        value: sk-04b5a430d54148b0aa8da039da5d795b
+      - key: LLM_BASE_URL
+        value: https://api.deepseek.com/v1
+      - key: LLM_MODEL
+        value: deepseek-chat
