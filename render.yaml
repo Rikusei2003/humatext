@@ -2,8 +2,8 @@ services:
   - type: web
     name: humatext-api
     runtime: python
-    repo: Rikusei2003/humatext
-    buildCommand: cd backend && pip install -r requirements.txt
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
     startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
